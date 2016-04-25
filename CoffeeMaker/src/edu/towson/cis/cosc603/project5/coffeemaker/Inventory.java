@@ -7,17 +7,17 @@ package edu.towson.cis.cosc603.project5.coffeemaker;
  */
 public class Inventory {
     
-    private static int coffee;
-    private static int milk;
-    private static int sugar;
-    private static int chocolate;
+    private static int coffee ;
+    private static int milk ;
+    private static int sugar ;
+    private static int chocolate ;   
     
     public Inventory() {
     	setCoffee(15);
     	setMilk(15);
     	setSugar(15);
-    	setChocolate(15);
-    }
+		setChocolate(15);
+	}
     
     /**
      * Method getChocolate.
@@ -135,9 +135,9 @@ public class Inventory {
      * @return String
      */
     public String toString() {
-    	return "Coffee: " + getCoffee() + "\n" +
-			"Milk: " + getMilk() + "\n" +
-			"Sugar: " + getSugar() + "\n" +
-			"Chocolate: " + getChocolate() + "\n";
+    	return "Coffee: " + this.getCoffee() + System.getProperty("line.separator") +
+			"Milk: " + getMilk() +System.getProperty("line.separator")   +
+			"Sugar: " + getSugar() + System.getProperty("line.separator")  +
+			"Chocolate: " + getChocolate() + System.getProperty("line.separator") ;
     }
 }

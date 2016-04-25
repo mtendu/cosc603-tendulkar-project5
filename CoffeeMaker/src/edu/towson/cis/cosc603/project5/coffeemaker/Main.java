@@ -19,53 +19,53 @@ public class Main {
         System.out.println("4. Add inventory");
         System.out.println("5. Check inventory");
         System.out.println("6. Make coffee");
-        System.out.println("0. Exit\n");
-        
+        System.out.println("0. Exit");
+        Main main = new Main();
+
         //Get user input
-        int userInput = stringToInt(inputOutput("Please press the number that corresponds to what you would like the coffee maker to do."));
-        
-        if(userInput == 1) addRecipe();
-        if(userInput == 2) deleteRecipe();
-        if(userInput == 3) editRecipe();
-        if(userInput == 4) addInventory();
-        if(userInput == 5) checkInventory();
-        if(userInput == 6) makeCoffee();
+        int userInput = main.stringToInt(main.inputOutput("Please press the number that corresponds to what you would like the coffee maker to do."));
+        if(userInput == 1) main.addRecipe();
+        if(userInput == 2) main.deleteRecipe();
+        if(userInput == 3) main.editRecipe();
+        if(userInput == 4) main.addInventory();
+        if(userInput == 5) main.checkInventory();
+        if(userInput == 6) main.makeCoffee();
         if(userInput == 0) System.exit(0);
     }
-	public static void addRecipe() {
+	public  void addRecipe() {
 	    //Read in recipe name
-	    String name = inputOutput("\nPlease enter the recipe name: ");
+	    final String name = inputOutput("Please enter the recipe name: ");
 	    
 	    //Read in recipe price
-	    String priceString = inputOutput("\nPlease enter the recipe price: $");
-	    int price = stringToInt(priceString);
+	    final String priceString = inputOutput("Please enter the recipe price: $");
+	    final int price = stringToInt(priceString);
 	    if(price < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt coffee
-	    String coffeeString = inputOutput("\nPlease enter the units of coffee in the recipe: ");
-	    int amtCoffee = stringToInt(coffeeString);
+	    final String coffeeString = inputOutput("Please enter the units of coffee in the recipe: ");
+	    final int amtCoffee = stringToInt(coffeeString);
 	    if(amtCoffee < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt milk
-	    String milkString = inputOutput("\nPlease enter the units of milk in the recipe: ");
+	    final String milkString = inputOutput("Please enter the units of milk in the recipe: ");
 	    int amtMilk = stringToInt(milkString);
 	    if(amtMilk < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt sugar
-	    String sugarString = inputOutput("\nPlease enter the units of sugar in the recipe: ");
+	    final String sugarString = inputOutput("Please enter the units of sugar in the recipe: ");
 	    int amtSugar = stringToInt(sugarString);
 	    if(amtSugar < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt chocolate
-	    String chocolateString = inputOutput("\nPlease enter the units of chocolate in the recipe: ");
+	    final String chocolateString = inputOutput("Please enter the units of chocolate in the recipe: ");
 	    int amtChocolate = stringToInt(chocolateString);
 	    if(amtChocolate < 0) {
 	    	mainMenu();
@@ -88,31 +88,32 @@ public class Main {
 	    mainMenu();
     }
     
-    public static void deleteRecipe() {
+    public  void deleteRecipe() {
         Recipe [] recipes = coffeeMaker.getRecipes();
         for(int i = 0; i < recipes.length; i++) {
             System.out.println((i+1) + ". " + recipes[i].getName());
         }
         String recipeToDeleteString = inputOutput("Please select the number of the recipe to delete.");
-        int recipeToDelete = stringToInt(recipeToDeleteString) - 1;
-	    if(recipeToDelete < 0) {
+        int recipeToDeleteIndx = stringToInt(recipeToDeleteString) - 1;
+	    if(recipeToDeleteIndx < 0) {
 	    	mainMenu();
 	    }
         
-        boolean recipeDeleted = coffeeMaker.deleteRecipe(recipes[recipeToDelete]);
+	    Recipe recipeToDelete = recipes[recipeToDeleteIndx];
+        boolean recipeDeleted = coffeeMaker.deleteRecipe(recipeToDelete);
         
-        if(recipeDeleted) System.out.println(recipes[recipeToDelete].getName() + " successfully deleted.");
-	    else System.out.println(recipes[recipeToDelete].getName() + "could not be deleted.");
+        if(recipeDeleted) System.out.println(recipeToDelete.getName() + " successfully deleted.");
+	    else System.out.println(recipeToDelete.getName() + "could not be deleted.");
         
         mainMenu();
     }
     
-    public static void editRecipe() {
+    public  void editRecipe() {
         Recipe [] recipes = coffeeMaker.getRecipes();
         for(int i = 0; i < recipes.length; i++) {
             System.out.println((i+1) + ". " + recipes[i].getName());
         }
-        String recipeToEditString = inputOutput("Please select the number of the recipe to edit.");
+        final String recipeToEditString = inputOutput("Please select the number of the recipe to edit.");
         int recipeToEdit = stringToInt(recipeToEditString) -1;
 	    if(recipeToEdit < 0) {
 	    	mainMenu();
@@ -121,38 +122,38 @@ public class Main {
         Recipe oldRecipe = recipes[recipeToEdit];
         
 	    //Read in recipe name
-	    String name = inputOutput("\nPlease enter the recipe name: ");
+        final String name = inputOutput("Please enter the recipe name: ");
 	    
 	    //Read in recipe price
-	    String priceString = inputOutput("\nPlease enter the recipe price: $");
+        final String priceString = inputOutput("Please enter the recipe price: $");
 	    int price = stringToInt(priceString);
 	    if(price < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt coffee
-	    String coffeeString = inputOutput("\nPlease enter the units of coffee in the recipe: ");
+	    final String coffeeString = inputOutput("Please enter the units of coffee in the recipe: ");
 	    int amtCoffee = stringToInt(coffeeString);
 	    if(amtCoffee < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt milk
-	    String milkString = inputOutput("\nPlease enter the units of milk in the recipe: ");
+	    final String milkString = inputOutput("Please enter the units of milk in the recipe: ");
 	    int amtMilk = stringToInt(milkString);
 	    if(amtMilk < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt sugar
-	    String sugarString = inputOutput("\nPlease enter the units of sugar in the recipe: ");
+	    final String sugarString = inputOutput("Please enter the units of sugar in the recipe: ");
 	    int amtSugar = stringToInt(sugarString);
 	    if(amtSugar < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt chocolate
-	    String chocolateString = inputOutput("\nPlease enter the units of chocolate in the recipe: ");
+	    final String chocolateString = inputOutput("Please enter the units of chocolate in the recipe: ");
 	    int amtChocolate = stringToInt(chocolateString);
 	    if(amtChocolate < 0) {
 	    	mainMenu();
@@ -174,30 +175,30 @@ public class Main {
         mainMenu();
     }
     
-    public static void addInventory() {
+    public  void addInventory() {
 	    //Read in amt coffee
-	    String coffeeString = inputOutput("\nPlease enter the units of coffee to add: ");
+    	final String coffeeString = inputOutput("Please enter the units of coffee to add: ");
 	    int amtCoffee = stringToInt(coffeeString);
 	    if(amtCoffee < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt milk
-	    String milkString = inputOutput("\nPlease enter the units of milk to add: ");
+	    final String milkString = inputOutput("Please enter the units of milk to add: ");
 	    int amtMilk = stringToInt(milkString);
 	    if(amtMilk < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt sugar
-	    String sugarString = inputOutput("\nPlease enter the units of sugar to add: ");
+	    final String sugarString = inputOutput("Please enter the units of sugar to add: ");
 	    int amtSugar = stringToInt(sugarString);
 	    if(amtSugar < 0) {
 	    	mainMenu();
 	    }
 	    
 	    //Read in amt chocolate
-	    String chocolateString = inputOutput("\nPlease enter the units of chocolate to add: ");
+	    final String chocolateString = inputOutput("Please enter the units of chocolate to add: ");
 	    int amtChocolate = stringToInt(chocolateString);
 	    if(amtChocolate < 0) {
 	    	mainMenu();
@@ -207,13 +208,13 @@ public class Main {
         mainMenu();
     }
     
-    public static void checkInventory() {
+    public  void checkInventory() {
         Inventory inventory = coffeeMaker.checkInventory();
         System.out.println(inventory.toString());
         mainMenu();
     }
     
-    public static void makeCoffee() {
+    public  void makeCoffee() {
         Recipe [] recipes = coffeeMaker.getRecipes();
         for(int i = 0; i < recipes.length; i++) {
             System.out.println((i+1) + ". " + recipes[i].getName());
@@ -233,7 +234,7 @@ public class Main {
         Recipe recipe = recipes[recipeToPurchase];
         int change = coffeeMaker.makeCoffee(recipe, amountToPay);
         
-        System.out.println("Your change is: " + change + "\n");
+        System.out.println("Your change is: " + change );
         mainMenu();
     }
     
@@ -242,7 +243,7 @@ public class Main {
      * @param message String
      * @return String
      */
-    public static String inputOutput(String message) {
+    public  String inputOutput(String message) {
         System.out.println(message);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    String returnString = "";
@@ -261,13 +262,13 @@ public class Main {
      * @param value String
      * @return int
      */
-    private static int stringToInt(String value) {
+    private  int stringToInt(String value) {
         int returnInt = -1;
         try {
             returnInt = Integer.parseInt(value);
         }
         catch (NumberFormatException e) {
-            System.out.println("Please input an integer\n");
+            System.out.println("Please input an integer");
         }
         return returnInt;
     }
@@ -278,7 +279,7 @@ public class Main {
      */
     public static void main(String[] args) {
 	    coffeeMaker = new CoffeeMaker();
-	    System.out.println("Welcome to the CoffeeMaker!\n");
+	    System.out.println("Welcome to the CoffeeMaker!");
 	    mainMenu();
 	}
 }

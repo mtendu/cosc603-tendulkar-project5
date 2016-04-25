@@ -66,13 +66,13 @@ public class CoffeeMaker {
 	 * @return the int
 	 */
 	private int returnEmptySpot() {
-		int emptySpot = -1;
+		//int emptySpot = -1;
 		for (int i = 0; i < NUM_RECIPES; i++) {
 			if (!recipeFull[i]) {
-				emptySpot = i;
+				return i;
 			}
 		}
-		return emptySpot;
+		return -1;
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public class CoffeeMaker {
         if(r != null) {
 	        for(int i = 0; i < NUM_RECIPES; i++) {
 	            if(r.equals(recipeArray[i])) {
-	                recipeArray[i] = recipeArray[i]; 
+	                recipeArray[i] = new Recipe();
 	                canDeleteRecipe = true;
 	            }
 	        }
@@ -120,18 +120,23 @@ public class CoffeeMaker {
      * @return boolean
      */
     public boolean editRecipe(Recipe oldRecipe, Recipe newRecipe) {
+    	
         boolean canEditRecipe = false;
+        canEditRecipe = isRecipeExist(newRecipe);
         for(int i = 0; i < NUM_RECIPES; i++) {
         	if(recipeArray[i].getName() != null) {
-	            if(newRecipe.equals(recipeArray[i])) { 
-	            	recipeArray[i] = new Recipe();
-	            	if(addRecipe(newRecipe)) {
+	            if(oldRecipe.equals(recipeArray[i])) { 
+	            	recipeArray[i] = newRecipe;
+	            	canEditRecipe = true;
+	            	/*if(addRecipe(newRecipe)) {
 	            		canEditRecipe = true;
 	            	} else {
 	            		canEditRecipe = false;
-	            	}
+	            	}*/
+	            	
 	            }
         	}
+        	
         }
         return canEditRecipe;
     }
