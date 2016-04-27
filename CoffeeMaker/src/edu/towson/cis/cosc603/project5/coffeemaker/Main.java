@@ -20,6 +20,18 @@ public class Main {
      * Main menu.
      */
     public static void mainMenu() {
+    	
+    		Recipe [] recipes = coffeeMaker.getRecipes();
+            for(int i = 0; i < recipes.length; i++) {
+                System.out.println((i+1) + ". " + recipes[i].getName() +
+                		recipes[i].getPrice() +
+                		recipes[i].getAmtCoffee() +
+                		recipes[i].getAmtMilk() +
+                		recipes[i].getAmtSugar() +
+                		recipes[i].getAmtChocolate());
+                		
+            }
+    	
         System.out.println("1. Add a recipe");
         System.out.println("2. Delete a recipe");
         System.out.println("3. Edit a recipe");
@@ -307,5 +319,6 @@ public class Main {
 	    coffeeMaker = new CoffeeMaker();
 	    System.out.println("Welcome to the CoffeeMaker!");
 	    mainMenu();
+	    
 	}
 }

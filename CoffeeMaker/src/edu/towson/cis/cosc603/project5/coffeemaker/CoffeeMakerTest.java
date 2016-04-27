@@ -39,10 +39,10 @@ public class CoffeeMakerTest extends TestCase {
 		r1.setAmtCoffee(6);
 		r1.setAmtMilk(1);
 		r1.setAmtSugar(1);
-		r1.setAmtChocolate(0);
+		r1.setAmtChocolate(1);
 		
 		r2= new Recipe();
-			}
+	}
 
 	/**
 	 * Test add recipe1.
@@ -64,8 +64,8 @@ public class CoffeeMakerTest extends TestCase {
 	 * 
 	 */
 	public void testAddRecipe3(){
-		r1.setPrice(-50);
-		assertFalse("Price should be positive", cm.addRecipe(r1));
+		r2.setPrice(-50);
+		assertFalse(cm.addRecipe(r2));
 		
 	}
 	
@@ -114,7 +114,9 @@ public class CoffeeMakerTest extends TestCase {
 	 */
 	public void testDeleteRecipe1() {
 		cm.addRecipe(r1);
+		
 		assertTrue(cm.deleteRecipe(r1));
+		
 	}
 	
 	/**
@@ -123,6 +125,17 @@ public class CoffeeMakerTest extends TestCase {
 	 */
 	public void testDeleteRecipe2(){
 			assertFalse("Cannot delete null recipe",cm.deleteRecipe(null));
+	}
+	
+	/**This test case will handle following if-statement is negate mutated
+	 *   if(r.getName().equals(recipeArray[i].getName())) 
+	 * Test delete recipe3.
+	 */
+	public void testDeleteRecipe3(){
+		cm.addRecipe(r1);
+		r2 = new Recipe();
+		r2.setName("Latte");
+		assertFalse(cm.deleteRecipe(r2));
 	}
 
 	/**
@@ -143,8 +156,9 @@ public class CoffeeMakerTest extends TestCase {
 		cm.addRecipe(r1);
 		Recipe newRecipe = new Recipe();
 		newRecipe = r1;
-		newRecipe.setPrice(-50);
-		assertFalse("Price should be postive integer",cm.editRecipe(r1, newRecipe));
+		newRecipe.setPrice(-10);
+		assertEquals(50, newRecipe.getPrice());
+		assertTrue(cm.editRecipe(r1, newRecipe));
 	}
 	
 	/**
@@ -165,6 +179,10 @@ public class CoffeeMakerTest extends TestCase {
 	 */
 	public void testAddInventory1(){
 		assertEquals(true,cm.addInventory(10,10,10,10));
+		assertTrue(i.getChocolate()> 15);
+		assertTrue(i.getCoffee()> 15);
+		assertTrue(i.getMilk()> 15);
+		assertTrue(i.getSugar()> 15);
 		
 	}
 	
@@ -178,6 +196,13 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	/**
+	 * Test add inventory with zero values
+	 */
+	public void testAddInventory3(){
+		assertEquals(true, cm.addInventory(0,0,0,0));
+		
+	}
+	/**
 	 * Test check inventory.
 	 */
 	public void testCheckInventory(){
@@ -185,11 +210,23 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	/**
-	 * Test make coffee1.
+	 * Test make coffee 
+	 * This test case also handles 
+	 * inventory.setCoffee(inventory.getCoffee() + amtCoffee);
+	 * if addition is mutated to subtraction
 	 */
 	public void testMakeCoffee1(){
 		cm.addRecipe(r1);
+		int amtPaid = 52;
+		assertTrue(amtPaid >= r1.getPrice());
 		assertEquals(2, cm.makeCoffee(r1, 52));
+		assertEquals(9, i.getCoffee());
+		assertEquals(14, i.getMilk());
+		assertEquals(14, i.getSugar());
+		assertEquals(14, i.getChocolate());
+		
+		assertEquals(0, cm.makeCoffee(r1, 50));
+		
 	}
 	
 	/** Test to make coffee without enough money.

@@ -10,26 +10,30 @@ package edu.towson.cis.cosc603.project5.coffeemaker;
 public class Inventory {
     
     /** The coffee. */
-    private static int coffee ;
+    private  static int coffee = 15 ;
     
     /** The milk. */
-    private static int milk ;
+    private static int milk = 15 ;
     
     /** The sugar. */
-    private static int sugar ;
+    private  static int sugar = 15 ;
     
     /** The chocolate. */
-    private static int chocolate ;   
+    private static int chocolate = 15;   
     
     /**
      * Instantiates a new inventory.
      */
+    
     public Inventory() {
-    	setCoffee(15);
-    	setMilk(15);
-    	setSugar(15);
-		setChocolate(15);
-	}
+    	
+        	setCoffee(15);
+        	setMilk(15);
+        	setSugar(15);
+        	setChocolate(15);
+        }
+        
+    
     
     /**
      * Method getChocolate.
@@ -43,11 +47,12 @@ public class Inventory {
      * @param chocolate int
      */
     public void setChocolate(int chocolate) {
+    	
     	if(chocolate >= 0) {
     		Inventory.chocolate = chocolate;
     	}
     	else {
-    		Inventory.chocolate = 0;
+    		Inventory.chocolate = getChocolate();
     	}
         
     }
@@ -66,8 +71,8 @@ public class Inventory {
     	if(coffee >= 0) {
     		Inventory.coffee = coffee;
     	}
-    	else {
-    		Inventory.coffee = 0;
+    	else{
+    		Inventory.coffee = getCoffee();
     	}
     }
     /**
@@ -86,7 +91,7 @@ public class Inventory {
     		Inventory.milk = milk;
     	}
     	else {
-    		Inventory.milk = 0;
+    		Inventory.milk = getMilk();
     	}
     }
     /**
@@ -105,7 +110,7 @@ public class Inventory {
     		Inventory.sugar = sugar;
     	}
     	else {
-    		Inventory.sugar = 0;
+    		Inventory.sugar = getSugar();
     	}
     }
     

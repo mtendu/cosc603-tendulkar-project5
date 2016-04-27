@@ -21,7 +21,7 @@ public class CoffeeMaker {
     private Inventory inventory;
     
     /** The counter. */
-    private int counter = 0;
+     int counter = 0;
     
     /**
      * Constructor for the coffee maker.
@@ -50,9 +50,6 @@ public class CoffeeMaker {
          if(counter > 3 || isRecipeExist(r)== false|| checkPrice(r)== false)
         
          return false;
-        
-        //Check for an empty recipe, add recipe to first empty spot
-          
         if(canAddRecipe) {
         	int emptySpot = returnEmptySpot();
 			
@@ -102,7 +99,7 @@ public class CoffeeMaker {
 	 */
 	private int returnEmptySpot() {
 		//int emptySpot = -1;
-		for (int i = 0; i < NUM_RECIPES; i++) {
+		for (int i = 0; i < NUM_RECIPES-1; i++) {
 			if (!recipeFull[i]) {
 				return i;
 			}
@@ -139,10 +136,10 @@ public class CoffeeMaker {
         
         if(r != null) {
 	        for(int i = 0; i < NUM_RECIPES; i++) {
-	            if(r.equals(recipeArray[i])) {
+	            if(r.getName().equals(recipeArray[i].getName())) {
 	                recipeArray[i] = new Recipe();
 	                canDeleteRecipe = true;
-	                counter--;
+	                
 	                
 	            }
 	        }
@@ -196,6 +193,7 @@ public class CoffeeMaker {
 	        inventory.setSugar(inventory.getSugar() + amtSugar);
 	        inventory.setChocolate(inventory.getChocolate() + amtChocolate);
         }
+        
         return canAddInventory;
     }
     
@@ -219,7 +217,7 @@ public class CoffeeMaker {
     public int makeCoffee(Recipe r, int amtPaid) {
         boolean canMakeCoffee = canMakeCoffee(r, amtPaid);
 		if(canMakeCoffee) {
-	        inventory.setCoffee(inventory.getCoffee() + r.getAmtCoffee()); 
+	        inventory.setCoffee(inventory.getCoffee() - r.getAmtCoffee()); 
 	        inventory.setMilk(inventory.getMilk() - r.getAmtMilk());
 	        inventory.setSugar(inventory.getSugar() - r.getAmtSugar());
 	        inventory.setChocolate(inventory.getChocolate() - r.getAmtChocolate());
