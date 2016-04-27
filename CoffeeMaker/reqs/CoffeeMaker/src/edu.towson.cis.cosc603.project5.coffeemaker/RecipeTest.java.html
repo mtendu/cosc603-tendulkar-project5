@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RecipeTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">CoffeeMaker (Apr 27, 2016 12:10:23 PM)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc603.project5.coffeemaker</a> &gt; <span class="el_source">RecipeTest.java</span></div><h1>RecipeTest.java</h1><pre class="source lang-java linenums">package edu.towson.cis.cosc603.project5.coffeemaker;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RecipeTest.
+ */
+<span class="fc" id="L12">public class RecipeTest {</span>
+	
+	/** The recipe. */
+	private Recipe recipe;
+	
+	/**
+	 * Sets the up.
+	 *
+	 * @throws Exception the exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L24">		recipe = new Recipe();</span>
+<span class="fc" id="L25">		recipe.setName(&quot;Coffee&quot;);</span>
+<span class="fc" id="L26">		recipe.setPrice(15);</span>
+<span class="fc" id="L27">		recipe.setAmtCoffee(2);</span>
+<span class="fc" id="L28">		recipe.setAmtMilk(2);</span>
+<span class="fc" id="L29">		recipe.setAmtSugar(1);</span>
+<span class="fc" id="L30">		recipe.setAmtChocolate(0);</span>
+		
+	
+<span class="fc" id="L33">	}</span>
+
+	/**
+	 * Test to check negative unit value of chocolate
+	 * Test set amt chocolate.
+	 */
+	@Test
+	public void testSetAmtChocolate() {
+<span class="fc" id="L41">		recipe.setAmtChocolate(-1);</span>
+<span class="fc" id="L42">		assertEquals(0,  recipe.getAmtChocolate());</span>
+<span class="fc" id="L43">		}</span>
+
+	/**
+	 * Test to check negative unit value of sugar
+	 * Test set amt sugar.
+	 */
+	@Test
+	public void testSetAmtSugar() {
+<span class="fc" id="L51">		recipe.setAmtSugar(-1);</span>
+<span class="fc" id="L52">		assertEquals(0,  recipe.getAmtSugar());</span>
+<span class="fc" id="L53">	}</span>
+	
+	/**
+	 * Test to check negative unit value of coffee
+	 * Test set amt coffee.
+	 */
+	@Test
+	public void testSetAmtCoffee() {
+<span class="fc" id="L61">		recipe.setAmtCoffee(-1);</span>
+<span class="fc" id="L62">		assertEquals(0,  recipe.getAmtCoffee());</span>
+<span class="fc" id="L63">	}</span>
+	
+	/**
+	 * Test to check negative unit value of milk
+	 * Test set amt milk.
+	 */
+	@Test
+	public void testSetAmtMilk(){
+<span class="fc" id="L71">		recipe.setAmtMilk(-1);</span>
+<span class="fc" id="L72">		assertEquals(0,  recipe.getAmtMilk());</span>
+		
+<span class="fc" id="L74">	}</span>
+
+	/**
+	 * Test to check negative price.
+	 * Test set price.
+	 */
+	@Test
+	public void testSetPrice() {
+<span class="fc" id="L82">		recipe.setPrice(-1);</span>
+<span class="fc" id="L83">		assertEquals(0,  recipe.getPrice());</span>
+<span class="fc" id="L84">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>CoffeeMaker (Apr 27, 2016 12:10:23 PM)</div></body></html>

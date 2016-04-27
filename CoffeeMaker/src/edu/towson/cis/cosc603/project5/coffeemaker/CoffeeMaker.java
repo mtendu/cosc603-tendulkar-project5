@@ -9,17 +9,20 @@ package edu.towson.cis.cosc603.project5.coffeemaker;
 public class CoffeeMaker {
 	
 	/**  Array of recipes in coffee maker. */
-	private Recipe [] recipeArray;
+	private  Recipe [] recipeArray;
 	
 	/**  Number of recipes in coffee maker. */
 	private final int NUM_RECIPES = 4;
 	
 	/**  Array describing if the array is full. */
-	private boolean [] recipeFull;
+	private  static boolean [] recipeFull;
 	
 	/**  Inventory of the coffee maker. */
     private Inventory inventory;
-	
+    
+    /** The counter. */
+    private int counter = 0;
+    
     /**
      * Constructor for the coffee maker.
      */
@@ -42,23 +45,55 @@ public class CoffeeMaker {
 	 */
 	public boolean addRecipe(Recipe r) {
         boolean canAddRecipe = true;
-          canAddRecipe = isRecipeExist(r);  
-       
+                
+        counter = isArrayFull();
+         if(counter > 3 || isRecipeExist(r)== false|| checkPrice(r)== false)
+        
+         return false;
         
         //Check for an empty recipe, add recipe to first empty spot
+          
         if(canAddRecipe) {
         	int emptySpot = returnEmptySpot();
 			
         	if(emptySpot != -1) {
         		recipeArray[emptySpot] = r;
+        		
         		recipeFull[emptySpot] = true;
+        		canAddRecipe = true;
+        		
         	}
-        	else {
-        		canAddRecipe = false;
-        	}
+        	
         }
         return canAddRecipe;
     }
+	
+	/**
+	 * Checks if is array full.
+	 *
+	 * @return the int
+	 */
+	private int isArrayFull(){
+		for(int i =0; i< NUM_RECIPES;i++){
+        	if(recipeFull[i]== true)
+        		counter++;
+        	
+        }
+		return counter;
+	}
+
+	/**
+	 * Check price.
+	 *
+	 * @param r the r
+	 * @return true, if successful
+	 */
+	private boolean checkPrice(Recipe r) {
+		if((r.getPrice()<= 0))
+          
+		return false;
+		else return true;
+	}
 
 	/**
 	 * Checks if is empty spot.
@@ -101,11 +136,14 @@ public class CoffeeMaker {
 	 */
     public boolean deleteRecipe(Recipe r) {
         boolean canDeleteRecipe = false;
+        
         if(r != null) {
 	        for(int i = 0; i < NUM_RECIPES; i++) {
 	            if(r.equals(recipeArray[i])) {
 	                recipeArray[i] = new Recipe();
 	                canDeleteRecipe = true;
+	                counter--;
+	                
 	            }
 	        }
         }
@@ -122,17 +160,14 @@ public class CoffeeMaker {
     public boolean editRecipe(Recipe oldRecipe, Recipe newRecipe) {
     	
         boolean canEditRecipe = false;
-        canEditRecipe = isRecipeExist(newRecipe);
+        if(checkPrice(newRecipe)== false || oldRecipe.getName()== null)
+        		return false;
+        
         for(int i = 0; i < NUM_RECIPES; i++) {
         	if(recipeArray[i].getName() != null) {
 	            if(oldRecipe.equals(recipeArray[i])) { 
 	            	recipeArray[i] = newRecipe;
 	            	canEditRecipe = true;
-	            	/*if(addRecipe(newRecipe)) {
-	            		canEditRecipe = true;
-	            	} else {
-	            		canEditRecipe = false;
-	            	}*/
 	            	
 	            }
         	}
@@ -152,7 +187,7 @@ public class CoffeeMaker {
      */
     public boolean addInventory(int amtCoffee, int amtMilk, int amtSugar, int amtChocolate) {
         boolean canAddInventory = true;
-        if(amtCoffee < 0 || amtMilk < 0 || amtSugar > 0 || amtChocolate < 0) { 
+        if(amtCoffee < 0 || amtMilk < 0 || amtSugar < 0 || amtChocolate < 0) { 
             canAddInventory = false;
         }
         else {
