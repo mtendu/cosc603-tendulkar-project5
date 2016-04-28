@@ -1,15 +1,12 @@
 package edu.towson.cis.cosc603.project5.coffeemaker;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class InventoryTest.
  */
-public class InventoryTest {
+public class InventoryTest extends TestCase{
 	
 	/** The recipe. */
 	private Recipe recipe;
@@ -22,7 +19,7 @@ public class InventoryTest {
 	 *
 	 * @throws Exception the exception
 	 */
-	@Before
+	
 	public void setUp() throws Exception {
 		recipe = new Recipe();
 		recipe.setName("Coffee");
@@ -39,7 +36,7 @@ public class InventoryTest {
 	/**
 	 * Test set coffee with positive value
 	 */
-	@Test
+	
 	public void testSetCoffee1(){
 		inventory.setCoffee(4);
 		assertEquals(4, inventory.getCoffee());
@@ -50,7 +47,7 @@ public class InventoryTest {
 	 * If unit value of coffee is negative, coffee is restored to previous value.
 	 * Test set coffee.
 	 */
-	@Test
+	
 	public void testSetCoffee2(){
 		inventory.setCoffee(0);
 		assertEquals(0, inventory.getCoffee());
@@ -61,7 +58,6 @@ public class InventoryTest {
 	/**
 	 * Test to set milk with positive value
 	 */
-	@Test
 	public void testSetMilk1(){
 			inventory.setMilk(4);
 			assertEquals(4, inventory.getMilk());
@@ -70,7 +66,7 @@ public class InventoryTest {
 	 * Test to check for zero and negative unit value of milk.
 	 * If unit value of milk is negative, milk is restored to previous value.
 	 */
-	@Test
+	
 	public void testSetMilk2(){
 		inventory.setMilk(0);
 		assertEquals(0, inventory.getMilk());
@@ -81,7 +77,7 @@ public class InventoryTest {
 	/**
 	 * Test to  set sugar with positive value
 	 */
-	@Test
+
 	public void testSetSugar1(){
 		inventory.setSugar(4);
 		assertEquals(4, inventory.getSugar());
@@ -90,7 +86,7 @@ public class InventoryTest {
 	 * Test to check for zero and negative unit value of sugar.
 	 * If unit value of sugar is negative, sugar is restored to previous value.
 	 */
-	@Test
+	
 	public void testSetSugar2(){
 		inventory.setSugar(0);
 		assertEquals(0, inventory.getSugar());
@@ -102,7 +98,7 @@ public class InventoryTest {
 	/**
 	 * Test to  set chocolate with positive value
 	 */
-	@Test
+	
 	public void testSetChocolate1(){
 		inventory.setChocolate(4);
 		assertEquals(4,inventory.getChocolate());
@@ -112,7 +108,6 @@ public class InventoryTest {
 	 * Test to check for zero and negative unit value of chocolate
 	 * If unit value of chocolate is negative, chocolate is restored to previous value.
 	 */
-	@Test
 	public void testSetChocolate2(){
 		inventory.setChocolate(0);
 		assertEquals(0, inventory.getChocolate());
@@ -125,7 +120,7 @@ public class InventoryTest {
 		/**
 		 * Test enough ingredients1.
 		 */
-		@Test
+		
 	public void testEnoughIngredients1() {
 		assertTrue(inventory.enoughIngredients(recipe));
 	}
@@ -134,7 +129,7 @@ public class InventoryTest {
 	 * Test to check not enough coffee for recipe
 	 * Test enough ingredients2.
 	 */
-	@Test
+	
 	public void testEnoughIngredients2(){
 	
 			recipe.setAmtCoffee(17);
@@ -144,7 +139,7 @@ public class InventoryTest {
 	/**
 	 * Test to check not enough milk for recipe
 	 */
-	@Test
+
 	public void testEnoughIngredients3(){
 			
 			recipe.setAmtMilk(17);
@@ -154,7 +149,7 @@ public class InventoryTest {
 	/**
 	 * Test to check not enough sugar for recipe.
 	 */
-	@Test
+
 	public void testEnoughIngredients4(){
 			
 			recipe.setAmtSugar(17);
@@ -164,7 +159,6 @@ public class InventoryTest {
 	/**
 	 * Test to check not enough chocolate for recipe
 	 */
-	@Test
 	public void testEnoughIngredients5(){
 			
 			recipe.setAmtChocolate(17);
@@ -177,7 +171,7 @@ public class InventoryTest {
 	 * Inventory.coffee <= r.getAmtCoffee()),
 	 * then this test case will handle the scenario.
 	 */
-	@Test
+	
 	public void testEnoughIngredients6(){
 		recipe.setAmtCoffee(15);
 		recipe.setAmtMilk(15);
@@ -189,7 +183,7 @@ public class InventoryTest {
 	/**
 	 * Test to string.
 	 */
-	@Test
+	
 	public void testToString() {
 		String result = inventory.toString();
 		assertEquals("Coffee: 15\r\nMilk: 15\r\nSugar: 15\r\nChocolate: 15\r\n", result);

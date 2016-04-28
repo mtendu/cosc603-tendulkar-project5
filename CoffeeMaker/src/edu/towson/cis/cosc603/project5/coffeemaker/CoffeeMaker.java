@@ -37,6 +37,10 @@ public class CoffeeMaker {
 	}
 
 	/**
+	 * Adds recipe if:
+	 * there are less than 3 recipes in recipeArray,
+	 * Recipe does not exist
+	 * price is not negative.
 	 * Returns true if a recipe is successfully added to the 
 	 * coffee maker.
 	 *
@@ -66,7 +70,7 @@ public class CoffeeMaker {
     }
 	
 	/**
-	 * Checks if is array full.
+	 * returns number of recipes in recipeArray
 	 *
 	 * @return the int
 	 */

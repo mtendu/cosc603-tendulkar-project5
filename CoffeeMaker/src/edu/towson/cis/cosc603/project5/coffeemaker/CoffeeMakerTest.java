@@ -176,6 +176,8 @@ public class CoffeeMakerTest extends TestCase {
 	
 	/**
 	 * Test add inventory1.
+	 * Also handles mutation of addition to subtraction in
+	 * inventory.setCoffee(inventory.getCoffee() + amtCoffee);
 	 */
 	public void testAddInventory1(){
 		assertEquals(true,cm.addInventory(10,10,10,10));

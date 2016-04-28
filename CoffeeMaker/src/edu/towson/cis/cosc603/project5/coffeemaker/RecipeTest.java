@@ -1,15 +1,12 @@
 package edu.towson.cis.cosc603.project5.coffeemaker;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.TestCase;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class RecipeTest.
  */
-public class RecipeTest {
+public class RecipeTest extends TestCase {
 	
 	/** The recipe. */
 	private Recipe recipe;
@@ -21,7 +18,7 @@ public class RecipeTest {
 	 *
 	 * @throws Exception the exception
 	 */
-	@Before
+	
 	public void setUp() throws Exception {
 		recipe = new Recipe();
 		recipe.setName("Coffee");
@@ -37,7 +34,7 @@ public class RecipeTest {
 	/**
 	 * Test set amt chocolate with positive value
 	 */
-	@Test 
+	
 	
 	public void testSetAmtChocolate1() {
 		
@@ -50,7 +47,7 @@ public class RecipeTest {
 	 * If value is negative, amtChocolate is set to old value;
 	 * Test set amt chocolate.
 	 */
-	@Test
+	
 	public void testSetAmtChocolate2() {
 		recipe.setAmtChocolate(0);
 		assertEquals(0,recipe.getAmtChocolate());
@@ -64,7 +61,7 @@ public class RecipeTest {
 	/**
 	 * Test set amtSugar with positive value
 	 */
-	@Test
+
 	public void testSetAmtSugar1(){
 		recipe.setAmtSugar(4);
 		assertEquals(4,recipe.getAmtSugar());
@@ -75,7 +72,7 @@ public class RecipeTest {
 	 * If value is negative, amtSugar is set to old value;
 	 * Test set amt sugar.
 	 */
-	@Test
+	
 	public void testSetAmtSugar2() {
 		recipe.setAmtSugar(0);
 		assertEquals(0, recipe.getAmtSugar());
@@ -87,7 +84,7 @@ public class RecipeTest {
 	/**
 	 * Test set amtCoffee with positive value
 	 */
-	@Test
+	
 	public void testSetAmtCoffee(){
 		recipe.setAmtCoffee(4);
 		assertEquals(4, recipe.getAmtCoffee());
@@ -97,7 +94,7 @@ public class RecipeTest {
 	 * If value is negative, amtCoffee is set to old value;
 	 * Test set amt coffee.
 	 */
-	@Test
+	
 	public void testSetAmtCoffee2() {
 		recipe.setAmtCoffee(0);
 		assertEquals(0, recipe.getAmtCoffee());
@@ -109,7 +106,7 @@ public class RecipeTest {
 	/**
 	 * Test set amtMilk with positive value.
 	 */
-	@Test
+	
 	public void testSetAmtMilk1(){
 		recipe.setAmtMilk(4);
 		assertEquals(4,  recipe.getAmtMilk());
@@ -120,7 +117,7 @@ public class RecipeTest {
 	 * If value is negative, amtMilk is set to old value
 	 * 
 	 */
-	@Test
+	
 	public void testSetAmtMilk2(){
 		recipe.setAmtMilk(0);
 		assertEquals(0, recipe.getAmtMilk());
@@ -132,7 +129,7 @@ public class RecipeTest {
 	/**
 	 * Test set price with positive value
 	 */
-	@Test
+	
 	public void testSetPrice1(){
 		recipe.setPrice(4);
 		assertEquals(4, recipe.getPrice());
@@ -142,7 +139,7 @@ public class RecipeTest {
 	 * If price is negative, then price is set to old price.
 	 * Test set price.
 	 */
-	@Test
+	
 	public void testSetPrice2() {
 		recipe.setPrice(0);
 		assertEquals(0,  recipe.getPrice());
